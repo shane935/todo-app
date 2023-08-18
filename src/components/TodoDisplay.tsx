@@ -4,12 +4,13 @@ import classnames from "classnames";
 const TodoDisplay = () => {
   const [state, dispatch] = useTodo();
 
-  const createHandleTodoCompleted = (index: number) => (e: any) => {
-    dispatch({
-      type: "complete",
-      value: index,
-    });
-  };
+  const createHandleTodoCompleted =
+    (index: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
+      dispatch({
+        type: "complete",
+        value: index,
+      });
+    };
 
   return (
     <ul>
