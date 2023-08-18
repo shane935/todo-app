@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+# Todo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup
 
-## Available Scripts
+Pull the repo, run `npm install` then `npm start`
 
-In the project directory, you can run:
+## Production
 
-### `npm start`
+to build for production run `npm run build`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Trade Offs
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I have only tested the functionality on Chrome, Safari and Firefox on my own Macbook Pro
+- I haven't written any tests, as a rule I like to have a intergration tests that cover the majority of the functionality. I would write them using gherkin feature files and run them using the cucumber test runner.
+- Rather then mutating state inside useReducer I would prefer to use a library which grants immutability, in this particular case it seems too much to include a library for one action
+- I haven't implemented any ID's on the todos. The only issue it causes in the current application is react doesn't have a meaningful key to use while rendering and consequently fires off an error in the console. It would become a bigger issue if we added removal, uncomplete and/or sorting.
+- There is a very limited amount of error checking and there are no fallback states should something go wrong while the app is loading/in use
+- The local storage implementation works fine in this use case but it would be a pain to scale, it would be better to use a state managment library or create a new hook that wraps useReducer abstracts out the local storage syncing
+- These features were intentionally left out as they weren't included in the story:
+  - Removal
+  - Uncomplete
+  - Sorting
+  - Styling - I am just using a simple css framework
+    To deliver a good user experiance I would recommend including them before going to production
